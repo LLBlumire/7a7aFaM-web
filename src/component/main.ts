@@ -3,6 +3,7 @@ import { unsafeHTML } from "lit-html/directives/unsafe-html";
 import marked from "marked";
 import { API } from "../util/consts";
 import { card } from "./card";
+import { dictionary } from "./page/dictionary";
 import { lesson } from "./page/lesson";
 
 export async function main(): Promise<TemplateResult> {
@@ -15,6 +16,8 @@ async function mainContent(path: string[]): Promise<TemplateResult> {
       return await loadPage(null);
     case "lesson":
       return await lesson(parseInt(path[1]));
+    case "dictionary":
+      return await dictionary(path.slice(1));
     default:
       return await loadPage(path[0]);
   }

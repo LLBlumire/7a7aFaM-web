@@ -44,6 +44,10 @@ async function linksCard(): Promise<TemplateResult> {
     };
   });
   linklist.push({
+    text: "Dictionary",
+    href: "/dictionary",
+  });
+  linklist.push({
     text: "Grammar",
     href: GRAMMAR,
     target: "_blank",

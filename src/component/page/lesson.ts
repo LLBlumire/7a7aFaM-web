@@ -12,13 +12,26 @@ export async function lesson(number: number): Promise<TemplateResult> {
       )
     ).json()
   ).data[0];
+  let existingLessons = (
+    await (await fetch(`${API}/items/lesson?fields=number`)).json()
+  ).data.map((lesson) => lesson.number);
 
-  if (!lesson) {
+  if (!lesson || !lesson.lesson) {
     window.location.replace(`${window.location.origin}/404`);
   }
 
   return card(
     html`Lesson ${number} &mdash; ${lesson.title} / ${lesson.narish_title}`,
-    html`${unsafeHTML(marked(lesson.lesson))}`
+    html`
+      ${unsafeHTML(marked(lesson.lesson))}
+      <div class="card__actions">
+        ${existingLessons.includes(number - 1)
+          ? html`<a href="/lesson/${number - 1}">&LeftArrow;Previous</a>`
+          : html``}
+        ${existingLessons.includes(number + 1)
+          ? html`<a href="/lesson/${number + 1}">Next&RightArrow;</a>`
+          : html``}
+      </div>
+    `
   );
 }

@@ -19,16 +19,20 @@ export function cardLinkList(
     target?: string;
   }[]
 ): TemplateResult {
+  let currentPage = window.location.pathname;
   return html`
     <ul class="card__link_list">
-      ${links.map(
-        (link) =>
-          html`<li>
+      ${links.map((link) => {
+        if (link.href === currentPage) {
+          return html`<li><a class="link--active">${link.text}</a></li>`;
+        } else {
+          return html`<li>
             <a href="${link.href}" target="${link.target ?? "_self"}"
               >${link.text}</a
             >
-          </li>`
-      )}
+          </li>`;
+        }
+      })}
     </ul>
   `;
 }

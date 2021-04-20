@@ -65,7 +65,12 @@ aside
       padding 0
       list-style none
       a
+        color #660099
         text-decoration none
+      a:visited
+        color #660099
+      a.link--active
+        color #000000
   
   &__content
     [data-md-directive="table-list"] + table
@@ -80,6 +85,13 @@ aside
         td:first-of-type
           font-weight bold
           padding-right 0.5em
+  
+  &__actions
+    display flex
+    justify-content space-around
+    a
+      text-decoration none
+      color #660099
 
 .word
   &__word
@@ -124,3 +136,31 @@ aside
 
 [data-md-directive]
   display none
+
+.dict_entry
+  display flex
+  flex-wrap wrap
+  gap 0.5rem
+  &__word a
+  &__word a:visited
+    text-decoration none
+    color #660099
+  &__pos
+    font-style italic
+  &__defs
+    margin 0
+    padding 0
+    list-style-type none
+  &__defs--many
+    width 100%
+    list-style-type decimal
+    margin-left 1rem
+    li
+      padding-left 0.5rem
+  &__def
+    margin 0
+    &__num
+      font-weight bold
+  &__def--many
+    width 100%
+
