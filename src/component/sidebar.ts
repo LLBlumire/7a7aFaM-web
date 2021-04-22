@@ -3,14 +3,24 @@ import { API, GRAMMAR } from "../util/consts";
 import { card, cardLinkList } from "./card";
 
 export async function sidebar(): Promise<TemplateResult> {
-  return html`<aside>${await lessonCard()}${await linksCard()}</aside>`;
+  return html`<aside>
+    ${flagCard()}${await lessonCard()}${await linksCard()}
+  </aside>`;
+}
+
+function flagCard(): TemplateResult {
+  return html`<div class="card card--borderless">
+    <a href="/">
+      <img src="/nareland.png" class="flag" />
+    </a>
+  </div>`;
 }
 
 async function lessonCard(): Promise<TemplateResult> {
   let lessonList = (
     await (
       await fetch(
-        `${API}/items/lesson?fields=title,narish_title,number&sort=number`
+        `${API}/items/lessons?fields=title,narish_title,number&sort=number`
       )
     ).json()
   ).data;

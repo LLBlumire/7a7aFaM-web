@@ -8,12 +8,12 @@ export async function lesson(number: number): Promise<TemplateResult> {
   let lesson = (
     await (
       await fetch(
-        `${API}/items/lesson?filter[number][_eq]=${number}&fields=title,narish_title,lesson`
+        `${API}/items/lessons?filter[number][_eq]=${number}&fields=title,narish_title,lesson`
       )
     ).json()
   ).data[0];
   let existingLessons = (
-    await (await fetch(`${API}/items/lesson?fields=number`)).json()
+    await (await fetch(`${API}/items/lessons?fields=number`)).json()
   ).data.map((lesson) => lesson.number);
 
   if (!lesson || !lesson.lesson) {

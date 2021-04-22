@@ -39,10 +39,11 @@ export default {
     styles(),
     copyFile("src/index.html", "dist"),
     copyFile("src/favicon.ico", "dist"),
+    copyFile("src/nareland.png", "dist"),
     serve({
       contentBase: "dist",
       historyApiFallback: true,
     }),
-    livereload("dist"),
+    // livereload("dist"),
   ],
 };
