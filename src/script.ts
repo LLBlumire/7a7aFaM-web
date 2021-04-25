@@ -1,11 +1,11 @@
-import "./style.styl";
-import { sidebar } from "./component/sidebar";
-import { main } from "./component/main";
-import { html, render } from "lit-html";
-
-export function setupRenderApp(to: HTMLElement) {
-  async function renderApp() {
-    render(html` ${await sidebar()}${await main()}`, to);
-  }
-  renderApp();
-}
+import "./style.css";
+import "./components/app";
+import "./components/card";
+import "./components/linkList";
+import "./components/staticLinkList";
+import "./components/lessonList";
+import "./components/staticPage";
+import "./components/renderMd";
+import "./components/lesson";
+import "./components/dictionary";
+import "./components/wordData";

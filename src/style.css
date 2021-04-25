@@ -1,0 +1,17 @@
+html {
+  overflow-y: scroll;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eeeeee;
+  font-family: "Noto Sans", sans-serif;
+}
+
+@media (max-width: 500px) {
+  :root {
+    --card-spacing: 0.25rem;
+  }
+}

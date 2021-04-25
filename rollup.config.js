@@ -32,10 +32,13 @@ export default {
     format: "es",
   },
   plugins: [
-    json(),
-    resolve(),
     commonjs(),
-    typescript(),
+    json(),
+    resolve({ browser: true }),
+    typescript({
+      experimentalDecorators: true,
+      target: "ES2020",
+    }),
     styles(),
     copyFile("src/index.html", "dist"),
     copyFile("src/favicon.ico", "dist"),
@@ -44,6 +47,6 @@ export default {
       contentBase: "dist",
       historyApiFallback: true,
     }),
-    // livereload("dist"),
+    livereload("dist"),
   ],
 };
